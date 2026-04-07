@@ -1,1 +1,0 @@
-# research-engineering-intern-assignment
