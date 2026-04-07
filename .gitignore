@@ -4,3 +4,4 @@ venv
 Data
 .ipynb_checkpoints 
 .env
+*.pkl
