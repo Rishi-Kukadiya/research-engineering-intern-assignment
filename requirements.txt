@@ -10,6 +10,7 @@ networkx
 python-louvain
 groq
 rank_bm25
+pyarrow
 redis
 
 fastapi==0.115.0
