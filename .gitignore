@@ -5,3 +5,4 @@ Data
 .ipynb_checkpoints 
 .env
 *.pkl
+__pycache__
