@@ -1,14 +1,3 @@
-ARCHITECTURE.md
-README.md
-venv
-Data
-.ipynb_checkpoints 
-.env
-*.pkl
-__pycache__
-node_modules
-
-
 # Logs
 logs
 *.log
