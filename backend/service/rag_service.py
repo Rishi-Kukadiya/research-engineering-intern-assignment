@@ -1,7 +1,7 @@
 import os
 from groq import Groq
 from dotenv import load_dotenv
-from search_service import search_posts
+from backend.service.search_service import search_posts
 
 
 load_dotenv()

@@ -8,7 +8,11 @@ HF_TOKEN = os.getenv("HUGGINGFACE_API_KEY")
 API_URL = "https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2/pipeline/feature-extraction"
 headers = {"Authorization": f"Bearer {HF_TOKEN}"}
 
-CHROMA_PATH = "../Data/chroma_db"
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CHROMA_PATH = os.path.join(BASE_DIR, "Data", "chroma_db")
+
+
 
 chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
 collection = chroma_client.get_collection(name="posts_v1")

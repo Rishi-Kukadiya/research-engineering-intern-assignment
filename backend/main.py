@@ -1,0 +1,24 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from backend.routes import chat
+
+app = FastAPI(
+    title="NarrativeScope API",
+    description="Backend engine for social media narrative intelligence",
+    version="1.0.0"
+)
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/api/v1/health")
+def health_check():
+    return {"status": "ok", "system": "NarrativeScope Backend Active"}
+
+app.include_router(chat.router, prefix="/api/v1/chat", tags=["Chat"])
