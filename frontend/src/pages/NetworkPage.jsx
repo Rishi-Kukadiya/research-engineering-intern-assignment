@@ -81,7 +81,7 @@ function NetworkCanvas({ nodes, links }) {
       .attr("r", nodeR)
       .attr("fill", (d) => colorScale(d.group || d.community || 0))
       .attr("fill-opacity", 0.88)
-      .attr("stroke", "#fff")
+      .attr("stroke", "var(--surface)")
       .attr("stroke-width", 1.5)
       .style("cursor", "grab");
 
@@ -93,7 +93,7 @@ function NetworkCanvas({ nodes, links }) {
       })
       .attr("text-anchor", "middle")
       .attr("dy", "0.35em")
-      .attr("fill", "#fff")
+      .attr("fill", "var(--text)")
       .attr("font-size", (d) => Math.max(8, nodeR(d) * 0.55))
       .attr("font-family", "Poppins, sans-serif")
       .attr("font-weight", "600")

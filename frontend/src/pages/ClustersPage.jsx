@@ -19,15 +19,15 @@ const CustomTreemapContent = ({ x, y, width, height, index, name, value }) => {
         y={y + 1}
         width={width - 2}
         height={height - 2}
-        style={{ fill: color, fillOpacity: 0.85, stroke: "var(--surface)", strokeWidth: 2, rx: 6 }}
+        style={{ fill: color, fillOpacity: 0.85, stroke: "var(--border)", strokeWidth: 2, rx: 6 }}
         rx={6}
       />
       {showLabel && (
         <>
-          <text x={x + 10} y={y + 22} fill="#fff" fontSize={12} fontWeight={600} fontFamily="Poppins">
+          <text x={x + 10} y={y + 22} fill="#1e293b" fontSize={12} fontWeight={600} fontFamily="Poppins">
             {name?.length > 18 ? name.slice(0, 18) + "…" : name}
           </text>
-          <text x={x + 10} y={y + 38} fill="rgba(255,255,255,0.75)" fontSize={11} fontFamily="Poppins">
+          <text x={x + 10} y={y + 38} fill="rgba(30,41,59,0.75)" fontSize={11} fontFamily="Poppins">
             {value} posts
           </text>
         </>

@@ -34,7 +34,7 @@ function Message({ msg, onPostClick }) {
                   <span
                     key={i}
                     className="source-chip post-link"
-                    style={{ cursor: "pointer", color: "#2563eb", textDecoration: "underline" }}
+                    style={{ cursor: "pointer", color: "var(--accent)", textDecoration: "underline" }}
                     onClick={() => onPostClick?.(s.id)}
                   >
                     {s.id}

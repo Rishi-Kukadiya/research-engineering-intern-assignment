@@ -3,25 +3,25 @@
 
 /* ── Design Tokens ─────────────────────────────────────────────────────────── */
 :root {
-  --bg:          #0d0f12;
-  --surface:     #13171c;
-  --surface2:    #1a1f26;
-  --surface3:    #21282f;
-  --border:      #262d36;
-  --border2:     #2e3740;
-  --text:        #e8eaed;
-  --text-muted:  #7b8a96;
-  --text-dim:    #4a5560;
-  --accent:      #4f8ef7;
-  --accent-dim:  rgba(79, 142, 247, 0.12);
-  --accent2:     #38d9a9;
-  --accent2-dim: rgba(56, 217, 169, 0.12);
-  --danger:      #ff6b6b;
+  --bg:          #f8fafc;
+  --surface:     #ffffff;
+  --surface2:    #f1f5f9;
+  --surface3:    #e2e8f0;
+  --border:      #d1d5db;
+  --border2:     #cbd5e1;
+  --text:        #1e293b;
+  --text-muted:  #64748b;
+  --text-dim:    #94a3b8;
+  --accent:      #2563eb;
+  --accent-dim:  rgba(37, 99, 235, 0.12);
+  --accent2:     #10b981;
+  --accent2-dim: rgba(16, 185, 129, 0.12);
+  --danger:      #ef4444;
   --sidebar-w:   232px;
   --radius:      10px;
   --radius-sm:   6px;
-  --shadow:      0 4px 24px rgba(0,0,0,0.35);
-  --shadow-sm:   0 2px 8px rgba(0,0,0,0.25);
+  --shadow:      0 4px 24px rgba(0,0,0,0.08);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
 }
 
 /* ── Reset ─────────────────────────────────────────────────────────────────── */
