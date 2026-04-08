@@ -3,7 +3,7 @@ duckdb
 dotenv
 chromadb
 sentence-transformers
-bertopic
+# bertopic
 umap-learn
 hdbscan
 networkx
