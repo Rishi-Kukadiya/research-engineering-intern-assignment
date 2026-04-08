@@ -24,4 +24,6 @@ export const api = {
     request("/search/semantic", { method: "POST", body: JSON.stringify({ query, top_k }) }),
 
   timeseries: () => request("/timeseries/posts"),
+  // Fetch a post by ID
+  postById: (id) => request(`/posts/${id}`),
 };

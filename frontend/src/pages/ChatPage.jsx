@@ -1,5 +1,7 @@
+
 import { useState, useRef, useEffect } from "react";
 import { api } from "../api/client";
+import "./ChatPage.css";
 
 const SUGGESTIONS = [
   "What are the most discussed topics?",
@@ -8,8 +10,9 @@ const SUGGESTIONS = [
   "What themes appear most frequently?",
 ];
 
-function Message({ msg }) {
+function Message({ msg, onPostClick }) {
   const isUser = msg.role === "user";
+  // Just show the content as plain text (no clickable IDs in text)
   return (
     <div className={`message-row ${isUser ? "user" : "assistant"}`}>
       {!isUser && (
@@ -24,9 +27,25 @@ function Message({ msg }) {
         {msg.sources?.length > 0 && (
           <div className="msg-sources">
             <span className="sources-label">Sources:</span>
-            {msg.sources.map((s, i) => (
-              <span key={i} className="source-chip">{typeof s === "string" ? s : s.title || s.id || `#${i + 1}`}</span>
-            ))}
+            {msg.sources.map((s, i) => {
+              // If s is an object with an id, make it clickable
+              if (s && typeof s === "object" && s.id) {
+                return (
+                  <span
+                    key={i}
+                    className="source-chip post-link"
+                    style={{ cursor: "pointer", color: "#2563eb", textDecoration: "underline" }}
+                    onClick={() => onPostClick?.(s.id)}
+                  >
+                    {s.id}
+                  </span>
+                );
+              }
+              // fallback for string or missing id
+              return (
+                <span key={i} className="source-chip">{typeof s === "string" ? s : s.title || s.id || `#${i + 1}`}</span>
+              );
+            })}
           </div>
         )}
       </div>
@@ -40,11 +59,13 @@ export default function ChatPage() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [postData, setPostData] = useState(null);
+  const [postLoading, setPostLoading] = useState(false);
   const bottomRef = useRef(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  }, [messages, loading, postData]);
 
   async function send(text = input) {
     const q = text.trim();
@@ -68,10 +89,57 @@ export default function ChatPage() {
 
   const showSuggestions = messages.length <= 1;
 
+  // Handler for clicking a post ID
+  async function handlePostClick(postId) {
+    setPostLoading(true);
+    setPostData(null);
+    try {
+      const data = await api.postById(postId);
+      setPostData(data);
+    } catch (e) {
+      setPostData({ error: e.message });
+    } finally {
+      setPostLoading(false);
+    }
+  }
+
+  // Only show necessary fields
+  function PostDetails({ post, onClose }) {
+    if (!post) return null;
+    if (post.error) return (
+      <div className="post-details-modal">
+        <div className="post-details-card">
+          <button className="close-btn" onClick={onClose}>×</button>
+          <div className="post-error">{post.error}</div>
+        </div>
+      </div>
+    );
+    return (
+      <div className="post-details-modal">
+        <div className="post-details-card">
+          <button className="close-btn" onClick={onClose}>×</button>
+          <h2 className="post-title">{post.title}</h2>
+          <div className="post-meta">
+            <span>By <b>{post.author}</b></span> | <span>Subreddit: <b>{post.subreddit}</b></span> | <span>Score: <b>{post.score}</b></span>
+          </div>
+          {post.thumbnail && post.thumbnail.startsWith("http") && (
+            <img className="post-thumb" src={post.thumbnail} alt="thumbnail" />
+          )}
+          {post.selftext && <div className="post-body">{post.selftext}</div>}
+          {post.url && (
+            <div className="post-link"><a href={post.url} target="_blank" rel="noopener noreferrer">Read more</a></div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="chat-shell">
       <div className="chat-messages">
-        {messages.map((m, i) => <Message key={i} msg={m} />)}
+        {messages.map((m, i) => (
+          <Message key={i} msg={m} onPostClick={handlePostClick} />
+        ))}
         {loading && (
           <div className="message-row assistant">
             <div className="msg-avatar">
@@ -114,6 +182,11 @@ export default function ChatPage() {
           </svg>
         </button>
       </div>
+
+      {/* Post details modal/card */}
+      {(postLoading || postData) && (
+        <PostDetails post={postLoading ? null : postData} onClose={() => setPostData(null)} />
+      )}
     </div>
   );
 }

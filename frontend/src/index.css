@@ -868,6 +868,179 @@ html, body, #root {
 .chat-send-btn:hover:not(:disabled) { opacity: 0.88; }
 .chat-send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
+/* ── Result Cards (Search) ─────────────────────────────────────────────────── */
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.result-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+}
+
+.result-card:last-child { border-bottom: none; }
+
+.result-card:hover {
+  background: var(--surface2);
+  margin: 0 -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: var(--radius-sm);
+}
+
+.rc-rank {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-dim);
+  min-width: 24px;
+  padding-top: 3px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.rc-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rc-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.rc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+/* Chip variants */
+.rc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid var(--border2);
+  white-space: nowrap;
+}
+
+.rc-chip-author {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-color: rgba(79, 142, 247, 0.2);
+}
+
+.rc-chip-sub {
+  background: rgba(56, 217, 169, 0.08);
+  color: var(--accent2);
+  border-color: rgba(56, 217, 169, 0.2);
+}
+
+.rc-chip-domain {
+  background: var(--surface3);
+  color: var(--text-muted);
+  border-color: var(--border2);
+}
+
+.rc-chip-flair {
+  background: rgba(204, 93, 232, 0.08);
+  color: #cc5de8;
+  border-color: rgba(204, 93, 232, 0.2);
+}
+
+.rc-chip-date {
+  background: var(--surface3);
+  color: var(--text-dim);
+  border-color: var(--border2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+}
+
+/* Right stats column */
+.rc-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+  min-width: 100px;
+}
+
+.rc-stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface3);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  padding: 3px 10px;
+  color: var(--accent);
+}
+
+.rc-stat-val {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+}
+
+.rc-stat-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.rc-similarity {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rc-sim-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rc-sim-value {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.rc-sim-track {
+  height: 3px;
+  background: var(--border2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rc-sim-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
 /* ── Scrollbar ─────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
