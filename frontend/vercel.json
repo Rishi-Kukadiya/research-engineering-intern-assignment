@@ -3,13 +3,10 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "rewrites": [
-        { "source": "/(.*)", "destination": "/index.html" }
-      ]
-  }
-] 
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
