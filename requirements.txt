@@ -10,6 +10,7 @@ networkx
 python-louvain
 groq
 rank_bm25
+s3fs
 pyarrow
 redis
 
