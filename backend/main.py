@@ -6,6 +6,7 @@ from backend.routes import timeseries
 from backend.routes import network
 from backend.routes import clusters
 from backend.routes import posts
+from backend.routes import analytics
 
 app = FastAPI(
     title="NarrativeScope API",
@@ -32,3 +33,4 @@ app.include_router(timeseries.router, prefix="/api/v1/timeseries", tags=["TimeSe
 app.include_router(network.router, prefix="/api/v1/network", tags=["Network Graph"])
 app.include_router(clusters.router, prefix="/api/v1/clusters", tags=["Clusetering Topics"])
 app.include_router(posts.router, prefix="/api/v1/posts", tags=["Post Details"]) 
+app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["Advanced Analytics"])

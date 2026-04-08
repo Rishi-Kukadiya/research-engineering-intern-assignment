@@ -5,6 +5,7 @@ import ClustersPage from "../../pages/ClustersPage";
 import NetworkPage from "../../pages/NetworkPage";
 import SearchPage from "../../pages/SearchPage";
 import ChatPage from "../../pages/ChatPage";
+import AnalysisPage from "../../pages/AnalysisPage";
 
 const PAGE_MAP = {
   timeseries: TimeSeriesPage,
@@ -12,6 +13,7 @@ const PAGE_MAP = {
   network: NetworkPage,
   search: SearchPage,
   chat: ChatPage,
+  analysis: AnalysisPage,
 };
 
 const PAGE_TITLES = {
@@ -20,6 +22,7 @@ const PAGE_TITLES = {
   network: { title: "Network Graph", sub: "Entity relationships and connections" },
   search: { title: "Semantic Search", sub: "Vector-based post retrieval" },
   chat: { title: "AI Assistant", sub: "RAG-powered contextual Q&A" },
+  analysis: { title: "Analysis Graphs", sub: "Custom analysis visualizations" },
 };
 
 export default function PageShell() {

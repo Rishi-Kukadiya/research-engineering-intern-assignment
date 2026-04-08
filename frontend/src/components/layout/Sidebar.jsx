@@ -10,6 +10,16 @@ const NAV_ITEMS = [
       </svg>
     ),
   },
+   {
+      id: "analysis",
+      label: "Analysis Graphs",
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="4" />
+          <path d="M7 14v-4m4 4V7m4 7v-2" />
+        </svg>
+      ),
+    },
   {
     id: "clusters",
     label: "Topic Clusters",
